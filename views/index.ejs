@@ -1,0 +1,161 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="/main.css">
+  <script type="text/javascript" src="/javascript.js"></script>
+  <title>Kontratat </title>
+</head>
+<body>
+  <div class="container">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Kontratat Aktive</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Shto Kontrate të re</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="form-row">
+          <div class="form-group col-md-6"><br>
+            <h1 style="color: #007fdb;"><b>Kontratat te cilat jane Aktive</b></h1>
+          </div>
+          <div class="form-group col-md-6">
+              <img src="kacanik.svg" width="100px" align="right">
+          </div>
+      </div>
+<input class="form-control mr-sm-2" id="myInput" type="search" placeholder="Kërkoni kontratën sipas numrit rendor të prokurorimit ">
+    <br>
+    <% docs.map((doc) => { %><p></p><% }); %>
+    <ol class="list-styled" id="myUL">
+      <% docs.map((doc) => { %>
+      <hr>
+      <div class="form-row">
+        <div class="form-group col-md-6"> 
+          <li><i> &nbsp  Nr rendor i prokurorimit: &nbsp&nbsp</i> <f> &nbsp&nbsp<%= doc.title %> &nbsp&nbsp</f>
+        </div> 
+        <a class="btn btn-primary btn-sm" href="/kontrat/<%= doc._id%>">Shiko Kontratën</a> <p> &nbsp</p> &nbsp&nbsp
+        <a class="btn btn-warning btn-sm" href="/kontrat/edit/<%= doc._id %>">Ndrysho Kontratën</a> <p> &nbsp </p>&nbsp&nbsp
+        
+        <a class="btn btn-danger btn-sm" href="/kontrat/delete/<%= doc._id %>" onclick="return confirm('A jeni i sigurt qe deshironi e fshini kontraten ? Ky hap eshte i pakthyeshem ! ');">Fshije kontratën</a>
+
+
+      <hr>
+      </div> <br>
+      <% }); %>
+    </ol>
+    <hr>
+    
+      </div>
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="form-row">
+          <div class="form-group col-md-6"> <br>
+            <h1 style="color: #007fdb; " ><b>Shtoni kontratën e re</b></h1>
+          </div>
+          <div class="form-group col-md-6">
+              <img src="kacanik.svg" width="100px" align="right">
+          </div>
+      </div>
+       
+        <h3> Prokurorimi </h3>
+
+<form method="POST" action="/kontrat/add"> 
+
+        <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="formGroupExampleInput" >Nr rendor i prokurorimit</label>
+                    <input type="text" class="form-control"   placeholder="Nr rendor i prokurorimit" name="title" required>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="formGroupExampleInput">Lloji i prokurorimit</label>
+                    <input type="txet" class="form-control" placeholder="Lloji i prokurorimit" name="description" required>
+                  </div>
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput">Aktiviteti i prokurorimit</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" name="aktiviteti" placeholder="Aktiviteti i prokurorimit" required>
+          </div>
+          
+          <br>
+
+          
+          <h3>Datat:</h3>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="formGroupExampleInput">Data e inicimit te aktivitetit</label>
+                  <input class="form-control" type="date"  name="dataInicimit" id="example-date-input" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="formGroupExampleInput">Data e publikimit te shpalljes</label>
+                  <input class="form-control" type="date"  name="publikimiShpalljes" id="example-date-input" required>
+              </div>
+            </div>
+          
+          <div class="form-group">
+            <label for="formGroupExampleInput">Data e nenshkrimit te kontrates</label>
+            <input class="form-control" type="date"  name="dataNenshkrimit" id="example-date-input" required>
+          </div>
+          <br>
+          <h6>Afatet per implementim te kontrates</h6>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+                <input class="form-control" type="date"  name="afatetPerImplementim" id="example-date-input" required>
+            </div>
+          <div class="form-group col-md-6">
+                <input class="form-control" type="date"  name="afatetPerImplementim1" id="example-date-input" required>
+          </div>
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput">Data e permbylljes se kontrates (data e pranimit te perkohshem / preliminar)</label>
+            <input class="form-control" type="date"  name="dataPermbylljes" id="example-date-input" required>
+          </div>
+          
+          <br>
+
+         
+          <h3>Çmimi dhe të dhëna të tjera:</h3>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="formGroupExampleInput">Çmimi i kontratës (pershirë të gjitha taksat)</label>
+              <input type="text" class="form-control" name="cmimiKontrates"  placeholder="Çmimi i kontratës" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="formGroupExampleInput">Çmimi total i paguar per kontrat</label>
+              <input type="type" class="form-control" name="cmimiTotal" placeholder="Çmimi total" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput">Emri i te cilit i eshte dhene kontrata</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" name="emri" placeholder="Emri dhe mbiemri" required>
+          </div>
+       
+
+          <br>
+
+         
+          <div class="form-group">
+            <div class="col-xs-6 text-center">
+            <button type="Subbmit" class="btn btn-primary btn-lg" value="Dergo">Dergo</button>
+            <input type="reset" class="btn btn-secondary btn-lg" value="Fshij">
+            </div>
+             
+          </div>
+         
+      <br>
+    </form>
+      </div>
+    </div>
+   
+  </div>
+</body>
+</html>
+

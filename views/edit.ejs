@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Detyra</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<style>
+    h1{
+        color:dodgerblue;
+        font-weight: bold;
+    }  
+    h2{
+        font-weight: bold;
+    }
+    td,th{
+        margin: 10px; padding: 5px;
+    }
+    
+</style>
+</head>
+
+<body>
+<div class="container">
+<h1>Shto kontraten e re </h1> 
+<h2>Prokurorimi:</h2>
+
+	<form method="POST" action="/kontrat/update/<%= doc._id %>">
+	
+<table>
+   <div class="form-group">
+    <tr>
+      <th>
+        <label for="inputlg">Nr. rendor i prokurimit </label>
+      </th>
+      <th>
+          <label for="inputlg">Lloji i prokurimit </label>
+      </th>
+    </tr>
+    </div>
+    <tr>
+      <td>
+        <input class="form-control input-lg" type="number"  name="nrrendor" placeholder="Nr.rendor i prokurimit" value="<%= doc.title %>" required>
+      </td>
+      <td>
+            <input class="form-control input-lg" type="text"  name="lloji" placeholder="Lloji i prokurimit" value="<%= doc.lloji required>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <label for="inputlg">Aktiviteti i prokurimit </label>
+        </th>
+        
+    </tr>
+</table>
+
+<input class="form-control input-lg" style="width: 525px" type="text" name="Aktivitetiiprokurimit" placeholder="Aktiviteti i prokurimit" value="<%= doc.Aktivitetiiprokurimit %>" required>
+<br><br>
+<h2>Datat:</h2>
+<table>
+   <div class="form-group">
+    <tr>
+      <th>
+        <label>Data e incimit te aktivitetit
+         te  prokurimit </label>
+      </th>
+      <th>
+          <label>Data e publikimit te shpalljes</label>
+      </th>
+    </tr>
+    </div>
+    <tr>
+      <td>
+        <input class="form-control input-lg" type="text"  name="dataIncimit" placeholder="03.03.2018" value="<%= doc.dataInicimit %>" required>
+      </td>
+      <td>
+            <input class="form-control input-lg" type="text"   name="DataPublikimit" placeholder="03.03.2018" value="<%= doc.DataPublikimit %>" required>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <label>Data e nenshkrimit te kontrates</label>
+        </th>
+        
+    </tr>
+</table>
+  <input class="form-control input-lg" style="width: 530px" type="text" id name="DataNenshkrimit" placeholder="03.03.2018" value="<%= doc.DataNenshkrimit %>" required>>
+  
+  <table>
+   <div class="form-group">
+    <tr>
+      <th>
+        <label>Data e incimit te aktivitetit
+         te  prokurimit </label>
+      </th>
+      
+    </tr>
+    </div>
+    <tr>
+      <td>
+        <input class="form-control input-lg" type="text" name="afatetImplementim" placeholder="03.03.2018">
+      </td>
+      <td>
+            <input class="form-control input-lg" type="text" name="afatetImplementim1" placeholder="03.03.2018">
+        </td>
+    </tr>
+    
+</table>
+<br>
+<label>Data e permbylljes te kontrates, data e pranimit preeleminar</label>
+<input class="form-control input-lg" style="width: 530px" type="text" name="dataPermbylljes" placeholder="03.03.2018" value="<%= doc.dataPermbylljes %>" required>
+  <br><br>
+<h2>Cmimi dhe te dhenat tjera: </h2>
+<table>
+   <div class="form-group">
+    <tr>
+      <th style="width:280px">
+        <label>Cmimi i kontrates(duke perfshire te gjitha taksat) </label>
+      </th>
+      <th>
+          <label>Cmimi total i paguar per kontraten</label>
+      </th>
+    </tr>
+    </div>
+    <tr>
+      <td>
+        <input class="form-control input-lg" type="text"  name="cmimiKontrates" placeholder="Cmimi i kontrates" value="<%= doc.cmimiKontrates %>" required>
+      </td>
+      <td>
+            <input class="form-control input-lg" type="text"  name="cmimiTotal" placeholder="Cmimi total" value="<%= doc.cmimiTotal %>" required>
+        </td>
+    </tr>
+  
+</table>
+ <label>Emri i te cilit eshte dhene kontrata</label>
+<input class="form-control input-lg" style="width: 540px" type="text" name="emri" placeholder="Emri dhe Mbiemri" value="<%= doc.emri %>" required>
+<br>
+  <div class="col-xs-12 text-center">
+            		<button class="btn btn-success btn-md" type="submit">Ruaje Kontraten e ndryshuar</button>	
+
+            		<a class="btn btn-warning btn-md" href="javascript:history.go(-1)" title="Return to the previous page" >Kthehu mbrapa</a>
+                <script type="text/javascript">function goBack()</script>	
+
+            		<a class="btn btn-danger btn-md" href="/kontrat/delete/<%= doc._id %> " onclick="return confirm('A jeni i sigurt qe deshironi e fshini kontraten ? Ky hap eshte i pakthyeshem ! ');">Fshije kontraten</a>
+            </div>
+  
+
+
+</form>
+</body>
+</html>	
+	
+
+         
+        
+                
+          
+         
+        
+       
+
+
+
+
+
+
+
+
